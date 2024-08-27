@@ -22,4 +22,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('user/', include('accounts.urls')),
     path('posts/', include('phibook.urls')),
+    path('contact/', include('contact.urls')),
 ]

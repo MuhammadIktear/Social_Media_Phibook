@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'phibook',
     'accounts',
+    'contact',
 ]
 
 MIDDLEWARE = [
