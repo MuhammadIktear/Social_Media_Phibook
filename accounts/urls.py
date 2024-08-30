@@ -1,6 +1,6 @@
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
-from .views import UserRegistrationsApiView, activate_user, UserLoginApiView, UserLogoutView, UserAccountViewSet,AllFollowingView,AllFollowerView
+from .views import UserRegistrationsApiView, activate_user, UserLoginApiView, UserLogoutView, UserAccountViewSet,AllFollowingView,AllFollowerView,PasswordChangeView,CustomResetPasswordRequestToken, CustomResetPasswordConfirm
 router = DefaultRouter()
 router.register(r'useraccounts', UserAccountViewSet)
 
@@ -12,4 +12,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', activate_user, name='activate-user'),
     path('followings/', AllFollowingView.as_view(), name='all-followings'),
     path('followers/', AllFollowerView.as_view(), name='all-followers'),
+    path('change-password/', PasswordChangeView.as_view(), name='change-password'),
+    path('reset-password-request/', CustomResetPasswordRequestToken.as_view(), name='reset-password-request'),
+    path('reset-password-confirm/', CustomResetPasswordConfirm.as_view(), name='reset-password-confirm'),
 ]
