@@ -234,20 +234,8 @@ class PasswordChangeView(generics.UpdateAPIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)   
     
-    
-# views.py
 
-from django_rest_passwordreset.views import ResetPasswordRequestToken, ResetPasswordConfirm
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_str
-from django.contrib.auth.tokens import default_token_generator
-from .models import UserAccount
-
+from django_rest_passwordreset.views import ResetPasswordRequestToken
 class CustomResetPasswordRequestToken(ResetPasswordRequestToken):
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')
@@ -261,7 +249,7 @@ class CustomResetPasswordRequestToken(ResetPasswordRequestToken):
         
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        reset_link = f'http://127.0.0.1:8000/user/reset-password-confirm/?uid={uid}&token={token}'
+        reset_link = f'http://127.0.0.1:5500/reset-password-confirm.html?uid={uid}&token={token}'
 
         email_subject = "Reset Your Password"
         email_body = render_to_string('password_reset_email.html', {'reset_link': reset_link})
@@ -278,17 +266,14 @@ class CustomResetPasswordConfirm(APIView):
         token = request.query_params.get('token')
 
         try:
-            # Decode the UID to get the user_id
             user_id = force_str(urlsafe_base64_decode(uidb64))
             user = UserAccount.objects.get(id=user_id)
         except (TypeError, ValueError, OverflowError, UserAccount.DoesNotExist):
             return Response({'error': 'Invalid user or token.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Check if the token is valid for the given user
         if not default_token_generator.check_token(user, token):
             return Response({'error': 'Invalid token or token has expired.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Process the new password
         new_password = request.data.get('new_password')
         if not new_password:
             return Response({'error': 'New password is required.'}, status=status.HTTP_400_BAD_REQUEST)
