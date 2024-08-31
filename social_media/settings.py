@@ -115,11 +115,8 @@ WSGI_APPLICATION = 'social_media.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://picku_user:uqqNzLbftZC84fz2baN1fi57nuTOiWW5@dpg-cqq76nt6l47c73ap2l4g-a.oregon-postgres.render.com/picku',
-    )
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
