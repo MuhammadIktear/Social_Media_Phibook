@@ -51,9 +51,9 @@ def activate_user(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect('https://phibook-f17w.onrender.com/login')
+        return redirect('https://phibook.netlify.app/login')
     else:
-        return redirect('https://phibook-f17w.onrender.com/register')
+        return redirect('https://phibook.netlify.app/register')
 
 
 class UserLoginApiView(APIView):
