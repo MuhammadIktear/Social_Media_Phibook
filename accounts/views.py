@@ -249,7 +249,7 @@ class CustomResetPasswordRequestToken(ResetPasswordRequestToken):
         
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        reset_link = f'https://phibook-f17w.onrender.com/reset-password-confirm.html?uid={uid}&token={token}'
+        reset_link = f'https://phibook.netlify.app/reset-password-confirm.html?uid={uid}&token={token}'
 
         email_subject = "Reset Your Password"
         email_body = render_to_string('password_reset_email.html', {'reset_link': reset_link})
