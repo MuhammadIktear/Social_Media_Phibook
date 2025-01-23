@@ -1,7 +1,11 @@
 Phibook(Social Media website) 
+
 Live  :https://phibook.netlify.app/login.html
+
 Github : https://phibook.netlify.app/login.html
+
 Phibook Frontend repo: https://github.com/MuhammadIktear/SocialBook
+
 
 Description : Phibook is a dynamic social media platform designed for seamless user interaction. 
 It allows users to sign up, create, edit, and delete posts with text, images, or videos, and 
@@ -17,8 +21,16 @@ Follow/Unfollow users, Edit profile, Password change, Logout, and more.
 
 
 Technology used :
+
 Frontend- HTML, CSS, JavaScript
+
 Backend- Django, Django REST Framework
+
 Database- SQLite (Django default)
+
+
+you can sign up or log in with the default credentials:
+
+Username: Iktear500 | Password: iktear@123
 
 
