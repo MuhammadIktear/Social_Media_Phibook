@@ -51,9 +51,9 @@ def activate_user(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect('https://phibook-f17w.onrender.com/login')
+        return redirect('https://phibook.netlify.app/login')
     else:
-        return redirect('https://phibook-f17w.onrender.com/register')
+        return redirect('https://phibook.netlify.app/register')
 
 
 class UserLoginApiView(APIView):
@@ -249,7 +249,7 @@ class CustomResetPasswordRequestToken(ResetPasswordRequestToken):
         
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        reset_link = f'https://phibook-f17w.onrender.com/reset-password-confirm.html?uid={uid}&token={token}'
+        reset_link = f'https://phibook.netlify.app/reset-password-confirm.html?uid={uid}&token={token}'
 
         email_subject = "Reset Your Password"
         email_body = render_to_string('password_reset_email.html', {'reset_link': reset_link})
