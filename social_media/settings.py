@@ -41,11 +41,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
-    "https://phibook-f17w.onrender.com",
+    "https://social-media-phibook-deployment.vercel.app/",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://phibook-f17w.onrender.com'
+    'https://social-media-phibook-deployment.vercel.app/'
 ]
 
 
