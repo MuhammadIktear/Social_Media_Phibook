@@ -34,18 +34,17 @@ AUTH_USER_MODEL = 'accounts.UserAccount'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
-    ".vercel.app"
+'*'
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
-    "https://social-media-phibook-deployment.vercel.app",
+    "https://phibook-f17w.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://social-media-phibook-deployment.vercel.app'
+    'https://phibook-f17w.onrender.com'
 ]
 
 
@@ -100,28 +99,28 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'social_media.wsgi.app'
+WSGI_APPLICATION = 'social_media.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.qkiuxjerioaibzhuwbwx',
-        'PASSWORD': 'ns4DAbJqHeVrWtLA',
-        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres.qkiuxjerioaibzhuwbwx',
+#         'PASSWORD': 'ns4DAbJqHeVrWtLA',
+#         'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
+#         'PORT': '5432'
+#     }
+# }
 
 
 # Password validation
